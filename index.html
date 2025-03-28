@@ -6,7 +6,7 @@
     <title>Centered Image with Close Button</title>
     <style>
 
-      @media (min-height: 600px) {
+      @media (min-height: 480px) {
         * {
           box-sizing: border-box;
         }
@@ -39,12 +39,24 @@
         .img {
           max-width: 90vw;
           display: block;
-          max-height: 80vh;
+          max-height: 70vh;
           /* background-color: red; */
         }
       }
 
-      @media (max-height: 600px) {
+			@media (max-height: 600px) {
+				.cap {
+          display: none;
+
+        }
+				.img{
+					max-height: 70vh;
+				}
+
+			
+			}
+
+      @media (max-height: 480px) {
 				body {
           margin: 0;
 				}
@@ -54,9 +66,9 @@
           height: auto;
         }
 
-        .cap {
+        /* .cap {
           display: none;
-        }
+        } */
       }
 
     </style>
@@ -69,5 +81,3 @@
     </div>
   </body>
 </html>
-
-
