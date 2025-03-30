@@ -26,13 +26,18 @@
 </head>
 <body>
     <img id="fullscreenImage" src="gallery.jpg" alt="Fullscreen Image">
-    <script>
+		  <script>
+        document.addEventListener("click", () => {
+            document.documentElement.requestFullscreen();
+        });
+    </script>
+    <!-- <script>
         document.addEventListener("click", () => {
            
             requestAnimationFrame(() => {
                 document.documentElement.requestFullscreen();
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
