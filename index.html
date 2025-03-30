@@ -19,8 +19,8 @@
             width: 100vw;
             height: 100vh;
             object-fit: contain;
-            transition: 0.5s;
-            /* transition: all 0.3s ease-in-out; */
+            /* transition: 0.5s; */
+          
         }
     </style>
 </head>
@@ -28,7 +28,7 @@
     <img id="fullscreenImage" src="gallery2.jpg" alt="Fullscreen Image">
     <script>
         document.addEventListener("click", () => {
-            // Ensure layout is stable before requesting fullscreen
+           
             requestAnimationFrame(() => {
                 document.documentElement.requestFullscreen();
             });
