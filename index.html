@@ -1,34 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    button {
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Viewer</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;  /* Dark background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;  /* Preserve aspect ratio */
+            transition: transform 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* For small devices (smartphones) */
+        @media (max-width: 767px) {
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        /* For tablets (portrait/landscape) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        /* For large screens (PC/Desktops) */
+        @media (min-width: 1025px) {
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <button onclick="goToGallery()">Open Gallery</button>
 
-  <script>
-    function goToGallery() {
-      // Open gallery in a new window or page
-      window.location.href = 'gallery.html';
-    }
-  </script>
+    <div class="image-container">
+        <img src="gallery.jpg" alt="Responsive Image">
+    </div>
+
 </body>
 </html>

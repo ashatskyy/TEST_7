@@ -21,33 +21,47 @@
       object-fit: contain;
       cursor: pointer;
     }
+    /* Invisible button to simulate a click */
+    .fullscreen-trigger {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
   <img id="fullscreenImage" src="gallery.jpg" alt="Fullscreen Image" />
 
-  <script>
-    const img = document.getElementById("fullscreenImage");
+  <!-- Invisible element to trigger fullscreen -->
+  <div class="fullscreen-trigger" id="fullscreenTrigger"></div>
 
-    // Trigger fullscreen when the page loads and user interaction happens
-    window.onload = () => {
+  <script>
+    const fullscreenTrigger = document.getElementById('fullscreenTrigger');
+    
+    // Function to request fullscreen
+    function enterFullscreen() {
       document.documentElement.requestFullscreen().catch(err => {
         console.error("Fullscreen failed", err);
       });
+    }
+
+    // Simulate a click right after page load
+    window.onload = () => {
+      fullscreenTrigger.click();  // Simulate user click to trigger fullscreen
     };
+
+    // Simulate a click on the invisible element
+    fullscreenTrigger.addEventListener('click', enterFullscreen);
 
     // When exiting fullscreen, go back to the first page
     document.addEventListener("fullscreenchange", () => {
       if (!document.fullscreenElement) {
         window.location.href = "index.html"; // Go back to the first page
       }
-    });
-
-    // Optionally, clicking on the image itself can also trigger fullscreen (if needed)
-    img.addEventListener('click', () => {
-      document.documentElement.requestFullscreen().catch(err => {
-        console.error("Fullscreen failed", err);
-      });
     });
   </script>
 </body>
