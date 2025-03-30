@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img id="fullscreenImage" src="gallery.jpg" alt="Fullscreen Image" />
+
+  <script>
+    const img = document.getElementById("fullscreenImage");
+
+    // Trigger fullscreen when the page loads and user interaction happens
+    window.onload = () => {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error("Fullscreen failed", err);
+      });
+    };
+
+    // When exiting fullscreen, go back to the first page
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        window.location.href = "index.html"; // Go back to the first page
+      }
+    });
+
+    // Optionally, clicking on the image itself can also trigger fullscreen (if needed)
+    img.addEventListener('click', () => {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error("Fullscreen failed", err);
+      });
+    });
+  </script>
+</body>
+</html>

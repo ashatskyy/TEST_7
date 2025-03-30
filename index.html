@@ -1,81 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Fullscreen Image</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Prevents unwanted scrolling */
-            background: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.2s ease-in-out; /* Smooth transition */
-            cursor: zoom-in;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <img id="fullscreenImage" src="gallery4.jpg" alt="Fullscreen Image">
+  <button onclick="goToGallery()">Open Gallery</button>
 
-    <script>
-        const img = document.getElementById("fullscreenImage");
-        let scale = 1;
-        let isFullscreen = false;
-
-        // Toggle fullscreen on click
-        img.addEventListener("click", () => {
-            if (!isFullscreen) {
-                document.documentElement.requestFullscreen().catch(err => console.log(err));
-            } else {
-                document.exitFullscreen();
-            }
-            isFullscreen = !isFullscreen;
-        });
-
-        // Zoom using mouse wheel
-        img.addEventListener("wheel", (event) => {
-            event.preventDefault();
-            scale += event.deltaY * -0.01;
-            scale = Math.min(Math.max(1, scale), 3); // Limit zoom levels
-            img.style.transform = `scale(${scale})`;
-        });
-
-        // Pinch-to-zoom for touch devices
-        let touchStartDistance = 0;
-
-        img.addEventListener("touchstart", (event) => {
-            if (event.touches.length === 2) {
-                touchStartDistance = getDistance(event.touches);
-            }
-        });
-
-        img.addEventListener("touchmove", (event) => {
-            if (event.touches.length === 2) {
-                event.preventDefault();
-                let newDistance = getDistance(event.touches);
-                let zoomFactor = newDistance / touchStartDistance;
-                scale = Math.min(Math.max(1, scale * zoomFactor), 3);
-                img.style.transform = `scale(${scale})`;
-                touchStartDistance = newDistance;
-            }
-        });
-
-        function getDistance(touches) {
-            const dx = touches[0].clientX - touches[1].clientX;
-            const dy = touches[0].clientY - touches[1].clientY;
-            return Math.sqrt(dx * dx + dy * dy);
-        }
-    </script>
+  <script>
+    function goToGallery() {
+      // Open gallery in a new window or page
+      window.location.href = 'gallery.html';
+    }
+  </script>
 </body>
 </html>
