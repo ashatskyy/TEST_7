@@ -16,13 +16,10 @@
             overflow: hidden;
         }
         img {
-            max-width: 100vw;
-            max-height: 100vh;
+            width: 100vw;
+            height: 100vh;
             object-fit: contain;
-            transition: transform 0.3s ease-in-out;
-        }
-        .zoom-in {
-            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -30,19 +27,10 @@
     <img id="fullscreenImage" src="gallery.jpg" alt="Fullscreen Image">
     <script>
         document.addEventListener("click", () => {
-            const image = document.getElementById("fullscreenImage");
-            
-            // Apply a slight zoom effect before fullscreen to prevent the jump
-            image.classList.add("zoom-in");
-            
-            setTimeout(() => {
+            // Ensure layout is stable before requesting fullscreen
+            requestAnimationFrame(() => {
                 document.documentElement.requestFullscreen();
-                
-                // Remove zoom effect after entering fullscreen
-                setTimeout(() => {
-                    image.classList.remove("zoom-in");
-                }, 300);
-            }, 100); // Small delay before fullscreen mode
+            });
         });
     </script>
 </body>
